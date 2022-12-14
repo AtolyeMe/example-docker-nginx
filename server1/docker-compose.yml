@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  servis1:
+    container_name: servis1
+    build:
+        context: ./servis1
+        dockerfile: Dockerfile
+    ports:
+        - "80:8080"
+    networks:
+        - testonboard
+  servis2:
+    container_name: servis2
+    build:
+        context: ./servis2
+        dockerfile: Dockerfile
+    ports:
+        - "82:8080"
+    networks:
+        - testonboard
+networks:
+    testonboard:
+        external: true

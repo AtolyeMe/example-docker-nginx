@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+        - testonboard
+networks:
+  testonboard:
+    external: true
