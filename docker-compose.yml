@@ -8,6 +8,15 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
     networks:
         - testonboard
+  certbot:
+    container_name: certbot
+    image: certbot/certbot
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/certbot:/etc/letsencrypt
+    command: certonly --webroot -w /etc/nginx/conf.d -d alameddinc.com -d www.alameddinc.com -d bloga.alameddinc.com -d www.bloga.alameddinc.com --email alameddinc@gmail.com
+    networks:
+        - testonboard
 networks:
   testonboard:
     external: true
